@@ -1,39 +1,18 @@
-name: CI Workflow for Melbin React App
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
 
+name: Test Project
+on: push
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-
-    # Skip installing dependencies
-    # - name: Install dependencies
-    #   run: npm install
-    #   working-directory: melbin-react-app
-
-    - name: Lint code
-      run: npm run lint
-      working-directory: melbin-react-app  # Ensure this points to your React app directory
-
-    - name: Run tests
-      run: npm test
-      working-directory: melbin-react-app  # Ensure this points to your React app directory
-
-    - name: Build project
-      run: npm run build
-      working-directory: melbin-react-app  # Ensure this points to your React app directory
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependancies
+        run: npm ci
+      - name: Run tests
+        run: npm test
