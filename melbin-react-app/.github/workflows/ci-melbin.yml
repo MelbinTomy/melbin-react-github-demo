@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -18,11 +21,17 @@ jobs:
       with:
         node-version: '18'
 
+    - name: Change directory to React app
+      run: cd melbin-react-app
+
     - name: Install dependencies
       run: npm install
+      working-directory: melbin-react-app
 
     - name: Run tests
       run: npm test
+      working-directory: melbin-react-app
 
     - name: Build project
       run: npm run build
+      working-directory: melbin-react-app
