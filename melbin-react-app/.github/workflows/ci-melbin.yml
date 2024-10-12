@@ -21,9 +21,10 @@ jobs:
       with:
         node-version: '18'
 
-    - name: Install dependencies
-      run: npm install
-      working-directory: melbin-react-app  # Ensure this points to your React app directory
+    # Skip installing dependencies
+    # - name: Install dependencies
+    #   run: npm install
+    #   working-directory: melbin-react-app
 
     - name: Lint code
       run: npm run lint
