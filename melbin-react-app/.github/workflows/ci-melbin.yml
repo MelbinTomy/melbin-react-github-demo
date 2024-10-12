@@ -19,19 +19,20 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '20'
-
-    - name: Change directory to React app
-      run: cd melbin-react-app
+        node-version: '18'
 
     - name: Install dependencies
       run: npm install
-      working-directory: melbin-react-app
+      working-directory: melbin-react-app  # Ensure this points to your React app directory
+
+    - name: Lint code
+      run: npm run lint
+      working-directory: melbin-react-app  # Ensure this points to your React app directory
 
     - name: Run tests
       run: npm test
-      working-directory: melbin-react-app
+      working-directory: melbin-react-app  # Ensure this points to your React app directory
 
     - name: Build project
       run: npm run build
-      working-directory: melbin-react-app
+      working-directory: melbin-react-app  # Ensure this points to your React app directory
